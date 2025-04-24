@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome To HyperNova Express</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- External Custom CSS -->
+  <link rel="stylesheet" href="/styles/styles.css">
+  <style>
+    /* Additional Inline CSS Overrides for Fullscreen Hero & Bold Text */
+    .hero-split {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh; /* Full viewport height */
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .hero-left {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    .hero-left h1 {
+      font-size: 3rem;
+      font-weight: 900; /* Extra bold */
+      color: #362a82;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .hero-left h2 {
+      font-size: 1.8rem;
+      color: #555;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .hero-left p {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .hero-left .btn { 
+      max-width: 220px;
+    }
+    .hero-right {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    /* Apply a gentle floating animation to all SVG courier graphics */
+    .hero-right svg {
+      width: 100%;
+      max-width: 400px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    
+    /* --- OUR SERVICES SECTION (Full-Page Enhanced) --- */
+    .services-full {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .services-full::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><circle cx="400" cy="300" r="250" fill="%23ffffff" opacity="0.1"/></svg>') no-repeat center;
+      z-index: 0;
+    }
+    .services-full .container { 
+      position: relative; 
+      z-index: 1; 
+    }
+    .services-full .section-heading { 
+      color: #362a82; 
+      font-weight: 700; 
+      margin-bottom: 30px; 
+      text-transform: uppercase; 
+    }
+    .services-full .lead { 
+      color: #333; 
+      margin-bottom: 50px; 
+    }
+    .services-full .service-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .services-full .service-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    .services-full .service-box svg { 
+      width: 60px; 
+      height: 60px; 
+      fill: #362a82; 
+      margin-bottom: 15px; 
+    }
+    .services-full .service-box h3 { 
+      font-size: 1.5rem; 
+      margin-bottom: 10px; 
+      color: #362a82; 
+    }
+    .services-full .service-box p { 
+      font-size: 1rem; 
+      color: #555; 
+    }
+    .services-full .extra-writeup { 
+      margin-top: 30px; 
+      font-size: 1.1rem; 
+      text-align: center; 
+      color: #362a82; 
+    }
+    
+    /* --- TESTIMONIALS SECTION (Full-Page Enhanced) --- */
+    .testimonials-full {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonials-full::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="%23ffffff" opacity="0.05"/></svg>') no-repeat center;
+      z-index: 0;
+    }
+    .testimonials-full .container { 
+      position: relative; 
+      z-index: 1; 
+    }
+    .testimonials-full .section-heading {
+      color: #362a82; 
+      font-weight: 700; 
+      margin-bottom: 30px; 
+      text-transform: uppercase;
+    }
+    /* Decorative SVG separator */
+    .testimonials-full .decorator {
+      margin: 0 auto 20px;
+      width: 100px;
+    }
+    .testimonials-full .testimonial-card {
+      background: #fff;
+      border: none;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 30px;
+    }
+    .testimonials-full .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    .testimonials-full .testimonial-card p { 
+      font-size: 1rem; 
+      color: #333; 
+      margin-bottom: 15px; 
+    }
+    .testimonials-full .testimonial-card footer { 
+      font-size: 0.9rem; 
+      color: #555; 
+      text-align: right; 
+    }
+    .testimonials-full .extra-testimonials {
+      margin-top: 30px; 
+      font-size: 1.1rem; 
+      text-align: center; 
+      color: #362a82;
+    }
+    
+    /* --- CONTACT SECTION (Full-Page Enhanced) --- */
+    .contact-full {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffffff, #f4f4f4);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-full::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><path d="M0,100 C200,200 600,0 800,100 L800,600 L0,600 Z" fill="%23d17777" opacity="0.05"/></svg>') no-repeat bottom right;
+      z-index: 0;
+    }
+    .contact-full .container { 
+      position: relative; 
+      z-index: 1; 
+    }
+    .contact-full .section-heading { 
+      color: #362a82; 
+      font-weight: 700; 
+      margin-bottom: 20px; 
+      text-transform: uppercase; 
+    }
+    .contact-full .lead { 
+      margin-bottom: 40px; 
+      color: #333; 
+    }
+    .contact-full .contact-info {
+      font-size: 1rem; 
+      color: #555; 
+      margin-bottom: 30px;
+    }
+    .contact-full .contact-info p {
+      margin-bottom: 15px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 10px;
+    }
+    .contact-full .contact-info svg {
+      width: 24px; 
+      height: 24px; 
+      fill: #362a82;
+    }
+    .contact-full form .form-control {
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .contact-full form button {
+      max-width: 220px;
+    }
+    .contact-full .extra-contact {
+      margin-top: 30px;
+      font-size: 1.1rem;
+      text-align: center;
+      color: #362a82;
+    }
+    
+    /* --- COOKIE CONSENT BANNER (No Changes) --- */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #362a82;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      z-index: 10000;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    .cookie-banner button {
+      background: #d17777;
+      border: none;
+      padding: 8px 16px;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .cookie-banner button:hover {
+      background: #b65a5a;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">HyperNova Express</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav ms-auto">
+           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+           <li class="nav-item"><a class="nav-link" href="/tracking.html">Track Shipment</a></li>
+           <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+           <li class="nav-item"><a class="nav-link" href="#map">Coverage Area</a></li>
+           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+           <li class="nav-item"><a class="nav-link" href="/admin/login.html">Admin Login</a></li>
+         </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Split Layout (Full Screen) -->
+  <header id="home">
+    <div class="hero-split">
+      <!-- Left Column: Bold Headline, Subheading, and Professional Write-Up -->
+      <div class="hero-left">
+        <h1>WELCOME TO HYPERNOVA EXPRESS DELIVERY COMPANY</h1>
+        <h2>Driven by Innovation, Defined by Dependability</h2>
+        <p>
+          At HyperNova Express, we leverage cutting-edge logistics and a dedicated team of professionals to deliver your packages safely and on time—every time. Our commitment to excellence is at the heart of everything we do.
+        </p>
+        <a href="/tracking.html" class="btn btn-danger btn-lg mt-4">Track Your Shipment</a>
+      </div>
+      <!-- Right Column: Two Courier-Related SVG Sketches with Animation -->
+      <div class="hero-right">
+        <!-- First Courier Graphic: Delivery Truck -->
+        <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <!-- Truck Body -->
+          <rect x="50" y="140" width="300" height="100" rx="10" ry="10" fill="#4e3f9f" />
+          <!-- Truck Cabin -->
+          <rect x="350" y="180" width="150" height="60" rx="8" ry="8" fill="#362a82" />
+          <!-- Wheels -->
+          <circle cx="120" cy="260" r="30" fill="#d17777" />
+          <circle cx="320" cy="260" r="30" fill="#d17777" />
+          <circle cx="430" cy="260" r="30" fill="#d17777" />
+          <!-- Windows -->
+          <rect x="370" y="190" width="50" height="30" rx="4" ry="4" fill="#fff" />
+          <!-- Road Line -->
+          <line x1="0" y1="280" x2="640" y2="280" stroke="#555" stroke-width="2" stroke-dasharray="10,10" />
+        </svg>
+        <!-- Second Courier Graphic: Package with Wing -->
+        <svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <!-- Package Box -->
+          <rect x="100" y="120" width="200" height="150" rx="8" ry="8" fill="#4e3f9f" />
+          <!-- Package Flaps -->
+          <polyline points="100,120 200,50 300,120" fill="none" stroke="#362a82" stroke-width="4" />
+          <!-- Wing (implying speed) -->
+          <path d="M300,180 C360,140 360,220 300,180" fill="#d17777" />
+          <!-- Detail lines on box -->
+          <line x1="100" y1="170" x2="300" y2="170" stroke="#fff" stroke-width="2"/>
+          <line x1="200" y1="120" x2="200" y2="270" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- OUR SERVICES SECTION (Full-Page Enhanced) -->
+  <section id="services" class="services-full">
+    <div class="container text-center">
+      <h2 class="section-heading">Our Services</h2>
+      <p class="lead">We offer a full spectrum of logistics solutions tailored specifically to your needs.</p>
+      <div class="row">
+        <!-- Service Box 1: Expedited Shipping -->
+        <div class="col-md-4">
+          <div class="service-box">
+            <!-- SVG Icon: Lightning Bolt -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="32,5 12,35 28,35 24,59 44,29 28,29" />
+            </svg>
+            <h3>Expedited Shipping</h3>
+            <p>Experience lightning-fast delivery with our modern logistics network designed to get your packages to you in record time.</p>
+          </div>
+        </div>
+        <!-- Service Box 2: Real-Time Tracking -->
+        <div class="col-md-4">
+          <div class="service-box">
+            <!-- SVG Icon: Location Pin -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32,2 C20,2 10,12 10,24 C10,40 32,62 32,62 C32,62 54,40 54,24 C54,12 44,2 32,2 Z M32,34 C26,34 22,30 22,24 C22,18 26,14 32,14 C38,14 42,18 42,24 C42,30 38,34 32,34 Z" />
+            </svg>
+            <h3>Real-Time Tracking</h3>
+            <p>Monitor your shipment every step of the way with our intuitive tracking system and get timely updates for ultimate peace of mind.</p>
+          </div>
+        </div>
+        <!-- Service Box 3: Secure Handling -->
+        <div class="col-md-4">
+          <div class="service-box">
+            <!-- SVG Icon: Shield -->
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32,2 L2,14 L2,34 C2,48 12,60 32,62 C52,60 62,48 62,34 L62,14 L32,2 Z M32,8 L56,16 L32,24 L8,16 L32,8 Z" />
+            </svg>
+            <h3>Secure Handling</h3>
+            <p>Your packages are handled with the utmost care at every stage, ensuring secure transport and delivery every time.</p>
+          </div>
+        </div>
+      </div>
+      <div class="extra-writeup mt-5">
+        <p>
+          Our expert team works around the clock, combining innovative technology with industry expertise to exceed your logistics expectations. Trust HyperNova Express for a seamless, professional, and reliable delivery experience.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION (Full-Page Enhanced) -->
+  <section id="testimonials" class="testimonials-full">
+    <div class="container text-center">
+      <h2 class="section-heading">What Our Clients Say</h2>
+      <!-- Decorative Separator -->
+      <svg class="decorator" width="100" height="20" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="10" x2="100" y2="10" stroke="#362a82" stroke-width="2" stroke-dasharray="5,5"/>
+      </svg>
+      <div class="row mt-5">
+        <!-- Testimonial Card 1 -->
+        <div class="col-md-4">
+          <div class="card shadow-sm testimonial-card">
+            <div class="card-body">
+              <blockquote class="blockquote">
+                <p>"Excellent service and reliable shipping. My package arrived on time and in perfect condition!"</p>
+                <footer class="blockquote-footer">John Doe</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial Card 2 -->
+        <div class="col-md-4">
+          <div class="card shadow-sm testimonial-card">
+            <div class="card-body">
+              <blockquote class="blockquote">
+                <p>"Friendly customer support and a seamless tracking experience. I feel truly valued as a customer."</p>
+                <footer class="blockquote-footer">Jane Smith</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial Card 3 -->
+        <div class="col-md-4">
+          <div class="card shadow-sm testimonial-card">
+            <div class="card-body">
+              <blockquote class="blockquote">
+                <p>"The commitment to excellence at HyperNova Express is unmatched. Their innovative solutions keep me coming back!"</p>
+                <footer class="blockquote-footer">Alice Johnson</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="extra-testimonials mt-4">
+        <p>
+          Our valued customers inspire us to continually push the boundaries of service excellence. Every story you share motivates us to deliver even more consistently and reliably. Experience the HyperNova difference today!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE AREA SECTION (Map) -->
+  <section id="map" class="mb-5">
+    <div class="container">
+      <h2 class="section-heading text-center">Our Coverage Area</h2>
+      <p class="text-center">
+        We deliver across the globe with our extensive network. Discover where we operate below.
+      </p>
+      <div class="map-container my-4">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d198051.7071226687!2d-73.9893083718782!3d40.70556522619666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c250b77d83d5d5%3A0x2929d22943c04b03!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1616588820509!5m2!1sen!2s" 
+          title="Coverage Map" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION (Full-Page Enhanced) -->
+  <section id="contact" class="contact-full">
+    <div class="container">
+      <h2 class="section-heading text-center">Contact Us</h2>
+      <p class="lead text-center">
+        We’re here to help. Reach out today for inquiries, support, or a personalized quote.
+      </p>
+      <div class="row mt-5">
+        <!-- Contact Information -->
+        <div class="col-md-6">
+          <div class="contact-info">
+            <p>
+              <!-- Email Icon SVG -->
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 12l30 20L62 12v40H2z" fill="#362a82"/>
+                <path d="M2 12l30 20 30-20" fill="none" stroke="#fff" stroke-width="2"/>
+              </svg>
+              <strong>Email:</strong> hypernovaexpress@outlook.com
+            </p>
+            <p>
+              <!-- Phone Icon SVG -->
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M48 2H16a14 14 0 00-14 14v32a14 14 0 0014 14h32a14 14 0 0014-14V16A14 14 0 0048 2z" fill="#362a82"/>
+                <path d="M32 44a12 12 0 110-24 12 12 0 010 24z" fill="#fff"/>
+              </svg>
+              <strong>Phone:</strong> +1 201 381 0806
+            </p>
+            <p>
+              <!-- Location Icon SVG -->
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 2C20 2 10 12 10 24c0 14 22 38 22 38s22-24 22-38C54 12 44 2 32 2z" fill="#362a82"/>
+                <circle cx="32" cy="24" r="6" fill="#fff"/>
+              </svg>
+              <strong>Address:</strong> 6353 Logistics Ave, New York, NY
+            </p>
+          </div>
+        </div>
+        <!-- Contact Form -->
+        <div class="col-md-6">
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger btn-lg">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="extra-contact mt-5">
+        <p>
+          Our dedicated support team is always on standby to answer your questions and provide you with the best service possible. Let's connect and make your experience extraordinary.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="text-center">&copy; 2025 HyperNova Express. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Chat Now Logo (Fixed at Bottom Right) -->
+  <div id="chat-logo">Chat Now</div>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookie-banner">
+    <span>This website uses cookies to ensure you get the best experience.</span>
+    <button id="cookie-accept">Accept Cookies</button>
+  </div>
+
+  <!-- Bootstrap JS Bundle (with Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Simple Cookie Consent Handling
+    document.getElementById('cookie-accept').addEventListener('click', function() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'true');
+    });
+    // Hide banner if already accepted
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
